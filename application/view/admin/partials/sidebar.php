@@ -5,48 +5,40 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="<?= BASEURL ?>asset/img/logo-small.png">
+          <div class="logo-image-big">
+            <img src="<?= BASEURL?>asset/img/logo.png" alt="" srcset="" style="width:300px">
           </div>
-        </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li <?= ($data['menu'] == 'home')?' class="active "':'';?> >
-            <a href="./dashboard.html">
+            <a href="<?= BASEURL?>Dashboards">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
-            <a href="./map.html">
+          <li <?= ($data['menu'] == 'part_masuk')?' class="active "':'';?>>
+            <a href="<?= BASEURL ?>Part_masuk">
+              <i class="nc-icon nc-box"></i>
+              <p>Part Masuk</p>
+            </a>
+          </li>
+          <li <?= ($data['menu'] == 'list_part')?' class="active "':'';?>>
+            <a href="<?= BASEURL?>List_part">
               <i class="nc-icon nc-box-2"></i>
               <p>List Part</p>
             </a>
           </li>
-          <li>
-            <a href="./user.html">
+          <li <?= ($data['menu'] == 'supplier')?' class="active "':'';?>>
+            <a href="<?= BASEURL?>Supplier">
               <i class="nc-icon nc-single-02"></i>
-              <p>Suplier</p>
+              <p>Supplier</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a <?= ($data['menu'] == 'approval_pengajuan')?' class="active "':'';?>>
               <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
+              <p>Approval Pengajuan</p>
             </a>
           </li>
           <!-- <li class="active-pro">

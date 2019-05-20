@@ -592,3 +592,103 @@
     </div>
   </div>
 </div>
+
+
+
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title">Edit Profile</h5>
+        </div>
+        <div class="card-body">
+          <form  method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Unique No</label>
+                  <input type="text" class="form-control" placeholder="Company" value="Creative Code Inc.">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Supplier</label>
+                  <select class="selectpicker" class="form-control">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Barbecue</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Model</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Part Number</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Part Name</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Stock</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Stock Min</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Qty</label>
+                  <input type="text" class="form-control" placeholder="Model" value="123">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" name="fileToUpload" class="form-control" placeholder="Model" id="fileToUpload">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary btn-round">Update Part</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
