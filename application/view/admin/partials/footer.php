@@ -48,6 +48,9 @@
       demo.initChartsPages();
     });
   </script> -->
+  <script>
+        $(".alert").alert();
+  </script>
 </body>
 
 </html>

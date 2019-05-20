@@ -1,6 +1,25 @@
+<?php
+  if($data['alert'] == "error"){ 
+      $alert = "danger";
+      $alert_display = "show";
+  } elseif($data['alert'] == "success"){ 
+      $alert = "success";
+      $alert_display = "show";
+  } else{
+      $alert = "danger";
+      $alert_display = "d-none";
+  }
+?>
 <div class="content">
   <div class="row">
     <div class="col-md-12">
+    <div class="alert alert-<?= $alert; ?> alert-dismissible fade <?= $alert_display; ?>" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><?= ucfirst($data['alert']) ?></strong> 
+        <?= $data['msg'] ?>
+    </div>
       <div class="card card-user">
         <div class="card-header">
           <h5 class="card-title">List Parts</h5>
@@ -31,6 +50,8 @@
                   <?php
                       $i = 1;
                       foreach ($data['data'] as $value) {
+                        $url_img = BASEURL.'asset/img/part/'.$value['image'];
+                        $url = ($value['image'] != '')? $url_img : BASEURL.'asset/img/logo-small.png';
                         $body = "
                                 <tr>
                                   <td>".$i++."</td>
@@ -40,7 +61,9 @@
                                   <td>$value[stock]</td>
                                   <td>$value[stock_min]</td>
                                   <td>$value[qty]</td>
-                                  <td>$value[image]</td>
+                                  <td>
+                                  <img src='$url' class='img-responsive image' style='height:60px'>
+                                  </td>
                                   <td>
                                     <a name='update' id='' class='btn btn-sm btn-primary' href='".$data['url_preview'].$value['id_part']."' role='button'>
                                       <i class='fa fa-eye' aria-hidden='true'></i>
