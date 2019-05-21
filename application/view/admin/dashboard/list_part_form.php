@@ -43,10 +43,18 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label>Supplier</label>
-                <select class="selectpicker" class="form-control" name="id_supplier">
-                <option value="1">Mustard</option>
-                <option value="2">Ketchup</option>
-                <option value="3">Barbecue</option>
+                <select class="form-control" name="id_supplier">
+                    <?php 
+                        if(isset($data['data_supplier'])){
+                            foreach ($data['data_supplier'] as $value) {
+                                if(isset($data['data']['id_supplier']) && $data['data']['id_supplier'] == $value['id_supplier']){
+                                    echo "<option value='$value[id_supplier]' selected >$value[nama]</option>";
+                                } else {
+                                    echo "<option value='$value[id_supplier]'>$value[nama]</option>";
+                                }
+                            }
+                        }
+                    ?>
                 </select>
             </div>
             </div>

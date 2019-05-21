@@ -37,6 +37,7 @@
                     <tr>
                         <th>No</th>
                         <th>Unique No</th>
+                        <th>Supplier</th>
                         <th>Model</th>
                         <th>Part Number</th>
                         <th>Stock</th>
@@ -56,6 +57,7 @@
                                 <tr>
                                   <td>".$i++."</td>
                                   <td>$value[uniq_no]</td>
+                                  <td>$value[nama]</td>
                                   <td>$value[model]</td>
                                   <td>$value[part_number]</td>
                                   <td>$value[stock]</td>

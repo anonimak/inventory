@@ -12,6 +12,7 @@ class List_part extends Controller {
         $this->helper('field_data');
         $this->helper('upload');
         $this->model = $this->model('M_part');
+        $this->model_supplier = $this->model('M_supplier');
 
     }
 
@@ -29,25 +30,34 @@ class List_part extends Controller {
     }
 
     public function add($error = NULL, $msg = NULL){
+        // get data supplier
+        $data_supplier = $this->model_supplier->getAll();
+
         $this->template('list_part_form',[
             'title' => 'Add Part',
             'action' => BASEURL.'List_part/insert/',
             'this' => 'add',
             'nav' => 'list_part',
+            'data_supplier' => $data_supplier,
             'alert' => $error,
             "msg" => str_replace('_', ' ', $msg)
         ]);
     }
 
     public function edit($id,$alert = NULL, $msg = NULL){
-        $data = $this->model->getById($id);
+        // get data supplier
+        $data_supplier = $this->model_supplier->getAll();
+
         // get data from part by id
+        $data = $this->model->getById($id);
+
         $this->template('list_part_form',[
             'title' => 'Edit Part',
             'action' => BASEURL.'List_part/update/',
             'this' => 'edit',
             'nav' => 'list_part',
             'data' => $data,
+            'data_supplier' => $data_supplier,
             'alert' => $alert,
             "msg" => str_replace('_', ' ', $msg)
         ]);

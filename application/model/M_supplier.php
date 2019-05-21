@@ -1,21 +1,17 @@
 <?php
-    class M_part extends Model{
+    class M_supplier extends Model{
         private $table, $id;
 
         public function __construct(){
             parent::__construct();
-            $this->table = 'part';
-            $this->table_supplier = 'supplier';
-            $this->id = 'id_part';
-            $this->id_supplier = 'id_supplier';
+            $this->table = 'supplier';
+            $this->id = 'id_supplier';
         }
 
         // Find All Part
         public function getAll(){
             $this->db->query("
-                SELECT a.*, b.nama FROM `$this->table` AS a
-                LEFT JOIN `$this->table_supplier` AS b
-                ON a.`$this->id_supplier` = b.`$this->id_supplier`
+                SELECT * FROM `$this->table`
             ");
             $result = $this->db->resultSet();
             return $result;
@@ -40,7 +36,7 @@
 
         public function update($data)
         {   
-            $id = $data['data']['id_part'];
+            $id = $data['data']['id_supplier'];
             $this->db->query("UPDATE `$this->table` SET $data[key] WHERE `$this->id` = $id");
             $result = $this->db->execute_param($data['data']);
             // $result = $data['data'];
