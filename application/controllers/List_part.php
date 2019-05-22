@@ -1,5 +1,5 @@
 <?php
-class List_part extends Controller {
+class List_part extends My_Controller {
 
     public function __construct()
     {
@@ -7,6 +7,9 @@ class List_part extends Controller {
         } else {
             $this->redirect('Users/login');
         }
+
+        // user level role
+        $this->level_role("List_part");
 
         // panggil helper
         $this->helper('field_data');

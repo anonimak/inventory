@@ -1,11 +1,6 @@
 <?php
-class Controller
+class Controller extends App
 {
-    // public function __construct(){
-    //     if (session_status() == PHP_SESSION_NONE) {
-	// 	    session_start();
-	// 	  }
-    // }
     public function view($view, $data = [])
     {
         require_once '../application/view/' . $view . '.php';
@@ -33,5 +28,4 @@ class Controller
             return false;
         }
     }
-
 }

@@ -71,7 +71,6 @@
           // Load View
           $this->template('login_form', $data);
 
-          echo "berhasil";
         }
 
       } else {
@@ -95,6 +94,7 @@
       
       $_SESSION['id'] = $user['id_login'];
       $_SESSION['username'] = $user['username'];
+      $_SESSION['level'] = $user['level'];
       $this->redirect('Dashboards');
     }
 

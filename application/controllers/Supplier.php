@@ -8,6 +8,9 @@ class Supplier extends Controller {
             $this->redirect('Users/login');
         }
 
+        // user level role
+        $this->level_role("Supplier");
+
         // panggil helper
         $this->helper('field_data');
         $this->model = $this->model('M_supplier');
