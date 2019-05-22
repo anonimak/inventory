@@ -29,12 +29,12 @@
         </a>
     </div>
     <div class="card-body">
-        <form action="<?=$data['action']?>" method="post" enctype="multipart/form-data">
+        <form id="list_part_form" action="<?=$data['action']?>" method="post" enctype="multipart/form-data" action method novalidate="novalidate">
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Unique No</label>
-                <input type="text" name="uniq_no" class="form-control" placeholder="Company" value="<?= (isset($data['data']))? $data['data']['uniq_no'] : ''; ?>">
+                <label>Unique No <star class="text-danger">*</star></label>
+                <input type="text" name="uniq_no" class="form-control" placeholder="Company" value="<?= (isset($data['data']))? $data['data']['uniq_no'] : ''; ?>" required="required"
                 <input type="hidden" name="id" value="<?= (isset($data['data']))? $data['data']['id_part'] : ''; ?>">
             </div>
             </div>
@@ -42,8 +42,16 @@
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Supplier</label>
-                <select class="form-control" name="id_supplier">
+                <label>Part Name <star class="text-danger">*</star></label>
+                <input type="text" name="part_name" class="form-control" placeholder="Part Name" value="<?= (isset($data['data']))? $data['data']['part_name'] : ''; ?>" required="required">
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+                <label>Supplier <star class="text-danger">*</star></label>
+                <select class="form-control selectpicker" name="id_supplier" data-style="select-with-transition" title="Select Supplier" required="required">
                     <?php 
                         if(isset($data['data_supplier'])){
                             foreach ($data['data_supplier'] as $value) {
@@ -78,32 +86,24 @@
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Part Name</label>
-                <input type="text" name="part_name" class="form-control" placeholder="Part Name" value="<?= (isset($data['data']))? $data['data']['part_name'] : ''; ?>">
+                <label>Stock <star class="text-danger">*</star></label>
+                <input type="text" name="stock" class="form-control" placeholder="Stock" value="<?= (isset($data['data']))? $data['data']['stock'] : ''; ?>" required="required">
             </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Stock</label>
-                <input type="text" name="stock" class="form-control" placeholder="Stock" value="<?= (isset($data['data']))? $data['data']['stock'] : ''; ?>">
+                <label>Stock Min <star class="text-danger">*</star></label>
+                <input type="text" name="stock_min" class="form-control" placeholder="Stock Min" value="<?= (isset($data['data']))? $data['data']['stock_min'] : ''; ?>" required="required">
             </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Stock Min</label>
-                <input type="text" name="stock_min" class="form-control" placeholder="Stock Min" value="<?= (isset($data['data']))? $data['data']['stock_min'] : ''; ?>">
-            </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-            <div class="form-group">
-                <label>Qty</label>
-                <input type="text" name="qty" class="form-control" placeholder="Qty" value="<?= (isset($data['data']))? $data['data']['qty'] : ''; ?>">
+                <label>Qty <star class="text-danger">*</star></label>
+                <input type="text" name="qty" class="form-control" placeholder="Qty" value="<?= (isset($data['data']))? $data['data']['qty'] : ''; ?>" required="required">
             </div>
             </div>
         </div>

@@ -19,26 +19,25 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= BASEURL ?>asset/demo/demo.css" rel="stylesheet" />
   <!-- Bootstrap-select -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.9/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
   <!-- Datatable -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
   <!-- bootstrap-select -->
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="<?= BASEURL ?>asset/css/bootstrap-select.min.css">
   <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/css/datatables.min.css"/>
   <!-- croppie -->
   <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/croppie/croppie.css"/>
 
   <!-- Javascript -->
   <script src="<?= BASEURL ?>asset/js/core/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!--   Core JS Files   -->
+  <script src="<?= BASEURL ?>asset/js/core/popper.min.js"></script>
+  <script src="<?= BASEURL ?>asset/js/core/bootstrap.min.js"></script>
+  <script src="<?= BASEURL ?>asset/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
-  <!-- datatable -->
-  <script type="text/javascript" src="<?= BASEURL ?>asset/js/datatables.min.js"></script>
   
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="<?= BASEURL ?>asset/js/plugins/bootstrap-select.min.js"></script>
+
 
   <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-  <script src="<?= BASEURL ?>asset/js/plugins/i18n/defaults-id_ID.min.js"></script>
+  <!-- <script src="<?= BASEURL ?>asset/js/plugins/i18n/defaults-id_ID.min.js"></script> -->
 </head>

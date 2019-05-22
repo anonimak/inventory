@@ -24,29 +24,32 @@
         $data = [       
           'email' => trim($_POST['email']),
           'password' => md5(($_POST['password'])),        
-          'email_err' => '',
-          'password_err' => '',       
+          'error' => false,
+          'msg' => '',       
         ];
 
         // Check for email
         if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email.';
+          $data['error'] = true;
+          $data['msg'] = 'Please enter email.';
         } else {
           // Check for user
           if($this->userModel->findUserByEmail($data['email'])){
             
           } else {
             // No User
-            $data['email_err'] = 'This email is not registered.';
+            $data['error'] = true;
+            $data['msg'] = 'This email is not registered.';
           }
         }
 
         if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password.';
+          $data['error'] = true;
+          $data['msg'] = 'Please enter password.';
         }
 
         // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err'])){
+        if(!$data['error']){
 
           // Check and set logged in user
           $loggedInUser = $this->userModel->login($data['email'], $data['password']);
@@ -57,15 +60,16 @@
             
             // echo "test";
           } else {
-            $data['password_err'] = 'Password incorrect.';
+            $data['error'] = true;
+            $data['msg'] = 'Password incorrect.';
             // Load View
-            $this->view('test', $data);
+            $this->template('login_form', $data);
             //echo "berhasil";
           }
           
         } else {
           // Load View
-          $this->view('test', $data);
+          $this->template('login_form', $data);
 
           echo "berhasil";
         }
@@ -77,12 +81,12 @@
         $data = [
           'email' => '',
           'password' => '',
-          'email_err' => '',
-          'password_err' => '',
+          'error' => false,
+          'msg' => '',
         ];
 
         // Load View
-        $this->view('test', $data);
+        $this->template('login_form', $data);
       }
     }
 
@@ -102,5 +106,11 @@
       session_destroy(); 
       $this->redirect('Users');
 
+    }
+
+    public function template($page, $data=[]){
+      $this->view('admin/partials/header');
+      $this->view('admin/login/'.$page, $data);
+      $this->view('admin/partials/footer');
     }
 }

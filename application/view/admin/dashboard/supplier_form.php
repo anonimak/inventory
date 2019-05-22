@@ -29,12 +29,12 @@
         </a>
     </div>
     <div class="card-body">
-        <form action="<?=$data['action']?>" method="post" enctype="multipart/form-data">
+        <form id="supplier_form" action="<?=$data['action']?>" method="post" action method novalidate="novalidate">
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Nama Supplier</label>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Supplier" value="<?= (isset($data['data']))? $data['data']['nama'] : ''; ?>">
+                <label>Nama Supplier <star class="text-danger">*</star></label>
+                <input type="text" name="nama" class="form-control" placeholder="Nama Supplier" value="<?= (isset($data['data']))? $data['data']['nama'] : ''; ?>" required="required">
                 <input type="hidden" name="id" value="<?= (isset($data['data']))? $data['data']['id_supplier'] : ''; ?>">
             </div>
             </div>
