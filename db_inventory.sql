@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 27, 2019 at 12:45 PM
+-- Generation Time: May 22, 2019 at 01:07 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -65,7 +65,14 @@ CREATE TABLE IF NOT EXISTS `part` (
   `image` varchar(100) NOT NULL,
   `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_part`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `part`
+--
+
+INSERT INTO `part` (`id_part`, `id_supplier`, `uniq_no`, `model`, `part_number`, `part_name`, `stock`, `stock_min`, `qty`, `image`, `date_creation`) VALUES
+(4, 3, '1', 'Futura', 'kjhkhk', 'Baut 43', 6, 1, 12, '', '2019-05-21 14:01:02');
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,15 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `detail` text NOT NULL,
   `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_supplier`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`id_supplier`, `nama`, `detail`, `date_creation`) VALUES
+(1, 'test haha', 'yuhu', '2019-05-21 13:43:52'),
+(3, 'yuhu', 'jnkn\r\n', '2019-05-21 13:52:58');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
