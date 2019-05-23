@@ -3,10 +3,15 @@ class Dashboards extends Controller {
 
     public function __construct()
     {
-        if($this->isLoggedIn()){
+        if(isset($_SESSION['id'])){
+            return true;
         } else {
             $this->redirect('Users/login');
         }
+        // if($this->isLoggedIn()){
+        // } else {
+        //     $this->redirect('Users/login');
+        // }
 
 
         // panggil helper

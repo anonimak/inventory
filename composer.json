@@ -1,0 +1,9 @@
+{
+    "require": {
+        "monolog/monolog": "1.0.*"
+    },
+    "autoload": {
+        "files": ["application/config/config.php", "application/helpers/session_helper.php"],
+        "classmap": ["application/core/"]
+    }
+}

@@ -5,8 +5,12 @@
     }
 
     public function index(){
-      // $this->redirect('home');
-      $this->login();
+      // echo $_SESSION['id'];
+      if($this->isLoggedIn()){
+        $this->redirect('Dashboard');
+      } else {
+        $this->login();
+      }
     }
 
     public function login(){
@@ -91,7 +95,6 @@
 
     // Create Session With User Info
     public function createUserSession($user){
-      
       $_SESSION['id'] = $user['id_login'];
       $_SESSION['username'] = $user['username'];
       $_SESSION['level'] = $user['level'];

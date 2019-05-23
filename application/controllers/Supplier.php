@@ -1,5 +1,5 @@
 <?php
-class Supplier extends Controller {
+class Supplier extends My_Controller {
 
     public function __construct()
     {
