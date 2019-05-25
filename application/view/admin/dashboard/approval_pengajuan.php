@@ -23,22 +23,18 @@
       </div>
       <div class="card card-user">
         <div class="card-header">
-            <h5 class="card-title">List Suppliers</h5>
-            <a class="btn btn-primary pull-right" href="<?=BASEURL?>Supplier/Add" role="button">
-                Add data
-                <i class="fa fa-plus-square" aria-hidden="true"></i>
-            </a>
+            <h5 class="card-title">Approval Pengajuan</h5>
         </div>
         <div class="card-body">
         <?php 
           if(isset($data['data']) && $data['data'] != NULL){
         ?>
-            <table id="example" class="datatables table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Supplier</th>
-                        <th>Detail</th>
+                        <th>Tanggal Pengajuan</th>
+                        <th>Deskripsi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -46,20 +42,21 @@
                 <?php
                       $i = 1;
                       foreach ($data['data'] as $value) {
+                        $date = date_format(date_create($value['date_creation']),"d/m/Y");
                         $body = "
                                 <tr>
                                   <td>".$i++."</td>
-                                  <td>$value[nama]</td>
-                                  <td>$value[detail]</td>
+                                  <td>$date</td>
+                                  <td>$value[deskripsi]</td>
                                   <td>
-                                    <a name='update' id='' class='btn btn-sm btn-primary' href='".$data['url_preview'].$value['id_supplier']."' role='button'>
-                                      <i class='fa fa-eye' aria-hidden='true'></i>
+                                    <a name='update' id='' class='btn btn-sm btn-primary' href='".$data['url_detail'].$value['id_part_request']."' role='button'>
+                                      <i class='fa fa-eye' aria-hidden='true'></i> Detail
                                     </a>
-                                    <a name='update' id='' class='btn btn-sm btn-primary' href='".$data['url_edit'].$value['id_supplier']."' role='button'>
-                                      <i class='fa fa-pencil-square' aria-hidden='true'></i>
+                                    <a name='update' id='' class='btn btn-sm btn-primary' href='".$data['url_approve'].$value['id_part_request']."' role='button'>
+                                      <i class='fa fa-check' aria-hidden='true'></i>
                                     </a>
-                                    <a name='delete' id='' class='btn btn-sm btn-danger' href='".$data['url_remove'].$value['id_supplier']."' role='button'>
-                                      <i class='fa fa-trash-o' aria-hidden='true'></i>
+                                    <a name='delete' id='' class='btn btn-sm btn-danger' href='".$data['url_reject'].$value['id_part_request']."' role='button'>
+                                      <i class='fa fa-times' aria-hidden='true'></i>
                                     </a>
                                   </td>
                                 </tr>

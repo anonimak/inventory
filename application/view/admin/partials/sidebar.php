@@ -35,8 +35,8 @@
               <p>Supplier</p>
             </a>
           </li>
-          <li>
-            <a <?= ($data['menu'] == 'approval_pengajuan')?' class="active "':'';?>>
+          <li <?= ($data['menu'] == 'approval_pengajuan')?' class="active "':'';?>>
+            <a href="<?= BASEURL?>Approval_pengajuan">
               <i class="nc-icon nc-tile-56"></i>
               <p>Approval Pengajuan</p>
             </a>

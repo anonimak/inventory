@@ -113,7 +113,7 @@
 
     public function template($page, $data=[]){
       $this->view('admin/partials/header');
-      $this->view('admin/login/'.$page, $data);
-      $this->view('admin/partials/footer');
+      $this->view('login/'.$page, $data);
+      $this->view('admin/partials/login_footer');
     }
 }

@@ -27,6 +27,8 @@
   <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/css/datatables.min.css"/>
   <!-- croppie -->
   <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/croppie/croppie.css"/>
+  <!-- my css -->
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/css/my.css"/>
 
   <!-- Javascript -->
   <script src="<?= BASEURL ?>asset/js/core/jquery.min.js"></script>

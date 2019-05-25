@@ -37,6 +37,8 @@
   <script src="<?= BASEURL ?>asset/js/plugins/bootstrap-notify.js"></script>
   <!-- Croppie -->
   <script src="<?= BASEURL ?>asset/croppie/croppie.js"></script>
+  <!-- Datatable -->
+  <script src="<?= BASEURL ?>asset/js/datatables.min.js"></script>
   <!-- Bootstrap-select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
   <!-- Jquery validate -->

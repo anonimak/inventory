@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label>Supplier <star class="text-danger">*</star></label>
+                <label>Part Name <star class="text-danger">*</star></label>
                 <select class="form-control selectpicker" id="id_part" name="id_part" data-style="select-with-transition" title="Select Part" required="required">
                     <?php 
                         if(isset($data['data_part'])){

@@ -32,11 +32,12 @@
         <?php 
           if(isset($data['data']) && $data['data'] != NULL){
         ?>
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="datatables table table-striped table-bordered table-responsive" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Unique No</th>
+                        <th>Part Name</th>
                         <th>Supplier</th>
                         <th>Model</th>
                         <th>Part Number</th>
@@ -57,6 +58,7 @@
                                 <tr>
                                   <td>".$i++."</td>
                                   <td>$value[uniq_no]</td>
+                                  <td>$value[part_name]</td>
                                   <td>$value[nama]</td>
                                   <td>$value[model]</td>
                                   <td>$value[part_number]</td>

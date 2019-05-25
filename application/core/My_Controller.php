@@ -7,14 +7,17 @@ class My_Controller extends Controller
         if(isset($_SESSION['level'])){
             switch ($_SESSION['level']){
                 case '1':
-                    $module = ['Part_masuk','List_part','Supplier'];
+                    $module = ['Part_masuk','List_part','Supplier','Approval_pengajuan'];
                     if (in_array($controller, $module)){
                         $this->exist_controller = true;
                     }
                     break;
                 
                 case '2':
-                    # code...
+                    $module = ['Part_masuk','List_part','Supplier','Approval_pengajuan'];
+                    if (in_array($controller, $module)){
+                        $this->exist_controller = true;
+                    }
                     break;
                 
                 default:
