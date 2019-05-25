@@ -3,13 +3,8 @@ class Supplier extends My_Controller {
 
     public function __construct()
     {
-        if($this->isLoggedIn()){
-        } else {
-            $this->redirect('Users/login');
-        }
-
         // user level role
-        $this->level_role("Supplier");
+        parent::__construct("Supplier");
 
         // panggil helper
         $this->helper('field_data');
@@ -20,7 +15,7 @@ class Supplier extends My_Controller {
 
     public function index($alert = NULL, $msg =NULL){
         $data = $this->model->getAll();
-        $this->template('supplier',[
+        $this->template->get_template('supplier',[
             "data" => $data,
             "url_preview" => BASEURL."Supplier/detail/",
             "url_edit" => BASEURL."Supplier/edit/",
@@ -31,7 +26,7 @@ class Supplier extends My_Controller {
     }
 
     public function add($error = NULL, $msg = NULL){
-        $this->template('supplier_form',[
+        $this->template->get_template('supplier_form',[
             'title' => 'Add Supplier',
             'action' => BASEURL.'Supplier/insert/',
             'this' => 'add',
@@ -44,7 +39,7 @@ class Supplier extends My_Controller {
     public function edit($id,$alert = NULL, $msg = NULL){
         $data = $this->model->getById($id);
         // get data from supplier by id
-        $this->template('supplier_form',[
+        $this->template->get_template('supplier_form',[
             'title' => 'Edit Supplier',
             'action' => BASEURL.'Supplier/update/',
             'this' => 'edit',
@@ -102,12 +97,12 @@ class Supplier extends My_Controller {
         }
     }
     
-    public function template($page, $data=[]){
-        $this->view('admin/partials/header');
-        $this->view('admin/partials/sidebar', ['menu' => 'supplier']);
-        $this->view('admin/partials/navbar');
-        $this->view('admin/dashboard/'.$page, $data);
-        $this->view('admin/partials/footer');
-    }
+    // public function template($page, $data=[]){
+    //     $this->view('admin/partials/header');
+    //     $this->view('admin/partials/sidebar', ['menu' => 'supplier']);
+    //     $this->view('admin/partials/navbar');
+    //     $this->view('admin/dashboard/'.$page, $data);
+    //     $this->view('admin/partials/footer');
+    // }
 
 }

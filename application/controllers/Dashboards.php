@@ -1,34 +1,29 @@
 <?php
-class Dashboards extends Controller {
+class Dashboards extends My_Controller {
 
     public function __construct()
     {
-        if(isset($_SESSION['id'])){
-            return true;
-        } else {
-            $this->redirect('Users/login');
-        }
-        // if($this->isLoggedIn()){
+        parent::__construct('Dashboard');
+        // if(isset($_SESSION['id'])){
+        //     return true;
         // } else {
         //     $this->redirect('Users/login');
         // }
 
 
+
         // panggil helper
         $this->helper('field_data');
+        // panggil template
     }
 
 
     public function index(){
-        $this->template('home');
-    }
-    
-    public function template($page, $data=[]){
-        $this->view('admin/partials/header');
-        $this->view('admin/partials/sidebar', ['menu' => $page]);
-        $this->view('admin/partials/navbar');
-        $this->view('admin/dashboard/'.$page);
-        $this->view('admin/partials/footer');
+        if($_SESSION['level'] == 1){
+            $this->template->get_template('home');
+        } else {
+            $this->template->get_template('home2');
+        }
     }
 
 }

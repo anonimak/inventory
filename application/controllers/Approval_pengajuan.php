@@ -3,13 +3,8 @@ class Approval_pengajuan extends My_Controller {
 
     public function __construct()
     {
-        if($this->isLoggedIn()){
-        } else {
-            $this->redirect('Users/login');
-        }
-
         // user level role
-        $this->level_role("Approval_pengajuan");
+        parent::__construct("Approval_pengajuan");
 
         // panggil helper
         $this->helper('field_data');
@@ -23,7 +18,7 @@ class Approval_pengajuan extends My_Controller {
 
     public function index($alert = NULL, $msg =NULL){
         $data = $this->model->getByStatus('submit');
-        $this->template('approval_pengajuan',[
+        $this->template->get_template('approval_pengajuan',[
             "data" => $data,
             "url_detail" => BASEURL."Approval_pengajuan/detail/",
             "url_approve" => BASEURL."Approval_pengajuan/approve/",
@@ -37,7 +32,7 @@ class Approval_pengajuan extends My_Controller {
         $data = $this->model->getById($id);
         $detail = $this->model->getAllDetail($id);
 
-        $this->template('detail_approval',[
+        $this->template->get_template('detail_approval',[
             "data" => $data,
             "detail" => $detail,
             "url_approve" => BASEURL."Approval_pengajuan/approve/",
@@ -138,12 +133,12 @@ class Approval_pengajuan extends My_Controller {
         }
     }
     
-    public function template($page, $data=[]){
-        $this->view('admin/partials/header');
-        $this->view('admin/partials/sidebar', ['menu' => 'approval_pengajuan']);
-        $this->view('admin/partials/navbar');
-        $this->view('admin/dashboard/'.$page, $data);
-        $this->view('admin/partials/footer');
-    }
+    // public function template($page, $data=[]){
+    //     $this->view('admin/partials/header');
+    //     $this->view('admin/partials/sidebar', ['menu' => 'approval_pengajuan']);
+    //     $this->view('admin/partials/navbar');
+    //     $this->view('admin/dashboard/'.$page, $data);
+    //     $this->view('admin/partials/footer');
+    // }
 
 }

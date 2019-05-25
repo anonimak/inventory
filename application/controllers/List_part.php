@@ -3,13 +3,8 @@ class List_part extends My_Controller {
 
     public function __construct()
     {
-        if($this->isLoggedIn()){
-        } else {
-            $this->redirect('Users/login');
-        }
-
         // user level role
-        $this->level_role("List_part");
+        parent::__construct("List_part");
 
         // panggil helper
         $this->helper('field_data');
@@ -22,7 +17,7 @@ class List_part extends My_Controller {
 
     public function index($alert = NULL, $msg =NULL){
         $data = $this->model->getAll();
-        $this->template('list_part',[
+        $this->template->get_template('list_part',[
             "data" => $data,
             "url_preview" => BASEURL."List_part/detail/",
             "url_edit" => BASEURL."List_part/edit/",
@@ -36,7 +31,7 @@ class List_part extends My_Controller {
         // get data supplier
         $data_supplier = $this->model_supplier->getAll();
 
-        $this->template('list_part_form',[
+        $this->template->get_template('list_part_form',[
             'title' => 'Add Part',
             'action' => BASEURL.'List_part/insert/',
             'this' => 'add',
@@ -54,7 +49,7 @@ class List_part extends My_Controller {
         // get data from part by id
         $data = $this->model->getById($id);
 
-        $this->template('list_part_form',[
+        $this->template->get_template('list_part_form',[
             'title' => 'Edit Part',
             'action' => BASEURL.'List_part/update/',
             'this' => 'edit',
@@ -162,12 +157,13 @@ class List_part extends My_Controller {
 		}
     }
 
-    public function template($page, $data=[]){
-        $this->view('admin/partials/header');
-        $this->view('admin/partials/sidebar', ['menu' => 'list_part']);
-        $this->view('admin/partials/navbar');
-        $this->view('admin/dashboard/'.$page, $data);
-        $this->view('admin/partials/footer');
-    }
+    // custom template
+    // public function template($page, $data=[]){
+    //     $this->view('admin/partials/header');
+    //     $this->view('admin/partials/sidebar', ['menu' => 'list_part']);
+    //     $this->view('admin/partials/navbar');
+    //     $this->view('admin/dashboard/'.$page, $data);
+    //     $this->view('admin/partials/footer');
+    // }
 
 }

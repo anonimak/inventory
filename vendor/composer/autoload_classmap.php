@@ -11,4 +11,5 @@ return array(
     'Database' => $baseDir . '/application/core/Database.php',
     'Model' => $baseDir . '/application/core/Model.php',
     'My_Controller' => $baseDir . '/application/core/My_Controller.php',
+    'Template' => $baseDir . '/application/core/Template.php',
 );

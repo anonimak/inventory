@@ -27,6 +27,7 @@ class ComposerStaticInitd9299a808145acee8f1470091739d9ca
         'Database' => __DIR__ . '/../..' . '/application/core/Database.php',
         'Model' => __DIR__ . '/../..' . '/application/core/Model.php',
         'My_Controller' => __DIR__ . '/../..' . '/application/core/My_Controller.php',
+        'Template' => __DIR__ . '/../..' . '/application/core/Template.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

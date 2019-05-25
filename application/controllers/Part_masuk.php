@@ -3,13 +3,8 @@ class Part_masuk extends My_Controller {
 
     public function __construct()
     {
-        if($this->isLoggedIn()){
-        } else {
-            $this->redirect('Users/login');
-        }
-
         // user level role
-        $this->level_role("Part_masuk");
+        parent::__construct("Part_masuk");
 
         // panggil helper
         $this->helper('field_data');
@@ -20,7 +15,7 @@ class Part_masuk extends My_Controller {
 
     public function index($alert = NULL, $msg =NULL){
         $data = $this->model->getAll();
-        $this->template('part_masuk',[
+        $this->template->get_template('part_masuk',[
             'title' => 'Part Masuk',
             'action' => BASEURL.'Part_masuk/add_part/',
             'this' => 'update',
@@ -47,11 +42,11 @@ class Part_masuk extends My_Controller {
         }
     }
     
-    public function template($page, $data=[]){
-        $this->view('admin/partials/header');
-        $this->view('admin/partials/sidebar', ['menu' => 'part_masuk']);
-        $this->view('admin/partials/navbar');
-        $this->view('admin/dashboard/'.$page, $data);
-        $this->view('admin/partials/footer');
-    }
+    // public function template($page, $data=[]){
+    //     $this->view('admin/partials/header');
+    //     $this->view('admin/partials/sidebar', ['menu' => 'part_masuk']);
+    //     $this->view('admin/partials/navbar');
+    //     $this->view('admin/dashboard/'.$page, $data);
+    //     $this->view('admin/partials/footer');
+    // }
 }
