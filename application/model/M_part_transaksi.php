@@ -19,8 +19,20 @@
             return $result;
         }
 
+        // Find All Part
+        public function getAllByStatus($status){
+            $this->db->query("
+                SELECT * FROM `$this->table`
+                WHERE `status` = :status
+            ");
+            $this->db->bind(':status',$status);
+            
+            $result = $this->db->resultSet();
+            return $result;
+        }
+
         public function getAllDetail($id_transaksi){
-            $this->db->query(" SELECT a.*, b.`part_name`, b.`model`, b.`part_number` FROM `$this->table_detail` AS a
+            $this->db->query(" SELECT a.*, b.* FROM `$this->table_detail` AS a
                                 LEFT JOIN `part` AS b 
                                 ON a.`id_part` = b.`id_part`
                                 WHERE `$this->id` = :id
@@ -41,7 +53,7 @@
         }
 
         public function getDetailById($id){
-            $this->db->query("SELECT a.*, b.`part_name`, b.`model`, b.`part_number` FROM `$this->table_detail` AS a
+            $this->db->query("SELECT a.*, b.* FROM `$this->table_detail` AS a
                                 LEFT JOIN `part` AS b 
                                 ON a.`id_part` = b.`id_part`
                                 WHERE `$this->id_detail` = :id");
@@ -63,6 +75,16 @@
         {
             $this->db->query("INSERT INTO `$this->table` ($data[key]) VALUES ($data[value])");
             $result = $this->db->execute_param($data['data']);
+            return $result;
+        }
+
+        public function insertGetId($data)
+        {
+            $this->db->query("INSERT INTO `$this->table` ($data[key]) VALUES ($data[value])");
+            $result = $this->db->execute_param($data['data']);
+            if($result){
+                return $this->db->lastInsertId();
+            }
             return $result;
         }
 

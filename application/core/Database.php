@@ -80,4 +80,8 @@ class Database{
         return $this->stmt->fetchColumn();
     }
 
+    public function lastInsertId(){
+        return $this->db->lastInsertId();
+    }
+
 }

@@ -31,6 +31,19 @@
             return $row;
         }
 
+        // Find All Part
+        public function getAllNotInTransaksi($id_part_request){
+            $this->db->query("
+                SELECT a.*, b.nama FROM `$this->table` AS a
+                LEFT JOIN `$this->table_supplier` AS b
+                ON a.`$this->id_supplier` = b.`$this->id_supplier`
+                WHERE a.`$this->id` NOT IN (SELECT `$this->id` FROM `part_d_request` WHERE `id_part_request` = :id)
+            ");
+            $this->db->bind(':id', $id_part_request);
+            $result = $this->db->resultSet();
+            return $result;
+        }
+
         public function insert($data)
         {
             $this->db->query("INSERT INTO `$this->table` ($data[key]) VALUES ($data[value])");

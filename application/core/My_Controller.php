@@ -10,7 +10,7 @@ class My_Controller extends Controller
         } else {
             $this->redirect('Users/login');
         }
-        
+
         $this->template = new Template;
         $this->level_role($controller);
     }
@@ -44,7 +44,7 @@ class My_Controller extends Controller
                     break;
             }
             if(!$this->exist_controller){
-                header("location:".BASEURL);
+                $this->redirect('');
             }
         }
     }
