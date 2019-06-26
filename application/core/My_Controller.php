@@ -23,7 +23,7 @@ class My_Controller extends Controller
                     // set template
                     $this->template->set_sidebar('admin/partials/sidebar');
 
-                    $module = ['Dashboard','Part_masuk','List_part','Supplier','Approval_pengajuan'];
+                    $module = ['Dashboard','Part_masuk','List_part','Supplier','Approval_pengajuan','Report_item_keluar'];
                     if (in_array($controller, $module)){
                         $this->exist_controller = true;
                     }

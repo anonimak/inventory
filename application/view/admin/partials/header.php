@@ -23,6 +23,7 @@
   <!-- Datatable -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
   <!-- bootstrap-select -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>asset/css/datatables.min.css"/>
   <!-- croppie -->
@@ -36,6 +37,7 @@
   <script src="<?= BASEURL ?>asset/js/core/popper.min.js"></script>
   <script src="<?= BASEURL ?>asset/js/core/bootstrap.min.js"></script>
   <script src="<?= BASEURL ?>asset/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
   
 

@@ -60,7 +60,7 @@
                                     <td>$value[uniq_no]</td>
                                     <td>$value[part_name]</td>
                                     <td>$value[part_number]</td>
-                                    <td>$value[stock]</td>
+                                    <td>$value[stock_request]</td>
                                     <td>
                                     <img src='$url' class='img-responsive image' style='height:60px'>
                                     </td>

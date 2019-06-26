@@ -32,7 +32,7 @@
         }
 
         public function getAllDetail($id_transaksi){
-            $this->db->query(" SELECT a.*, b.* FROM `$this->table_detail` AS a
+            $this->db->query(" SELECT a.*, a.`stock` as stock_request, b.* FROM `$this->table_detail` AS a
                                 LEFT JOIN `part` AS b 
                                 ON a.`id_part` = b.`id_part`
                                 WHERE `$this->id` = :id
@@ -67,6 +67,21 @@
         public function getByStatus($status){
             $this->db->query("SELECT * FROM `$this->table` WHERE `status` = :status");
             $this->db->bind(':status', $status);
+            $result = $this->db->resultSet();
+            return $result;
+        }
+
+        public function getReportItemByPeriode($tgl_awal, $tgl_akhir){
+            $this->db->query(" SELECT a.*, b.*, c.part_name, c.part_number,c.uniq_no, SUM(a.stock) as total_stock
+                                FROM `part_d_request` AS a
+                                LEFT JOIN `part_t_request` AS b
+                                ON a.id_part_request = b.id_part_request
+                                LEFT JOIN `part` AS c
+                                ON a.id_part = c.id_part
+                                WHERE b.status = 'approve'
+                                AND b.approve_date BETWEEN '$tgl_awal' AND '$tgl_akhir'
+                                GROUP BY id_part
+            ");
             $result = $this->db->resultSet();
             return $result;
         }

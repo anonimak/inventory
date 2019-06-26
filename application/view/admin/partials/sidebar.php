@@ -41,6 +41,12 @@
               <p>Approval Pengajuan</p>
             </a>
           </li>
+          <li <?= ($data['menu'] == 'report_item_keluar')?' class="active "':'';?>>
+            <a href="<?= BASEURL?>Report_item_keluar">
+              <i class="nc-icon nc-paper"></i>
+              <p>Report Item Keluar</p>
+            </a>
+          </li>
           <!-- <li class="active-pro">
             <a href="./upgrade.html">
               <i class="nc-icon nc-spaceship"></i>

@@ -7,7 +7,7 @@
     public function index(){
       // echo $_SESSION['id'];
       if($this->isLoggedIn()){
-        $this->redirect('Dashboard');
+        $this->redirect('Dashboards');
       } else {
         $this->login();
       }

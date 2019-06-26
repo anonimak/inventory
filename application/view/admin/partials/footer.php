@@ -56,6 +56,12 @@
   </script> -->
   <script>
         $(".alert").alert();
+        $(function () {
+          $('.datepicker').datepicker({
+              format: 'yyyy-mm-dd',
+              endDate:'now'
+          });
+        });
   </script>
 </body>
 

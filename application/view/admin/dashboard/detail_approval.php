@@ -33,7 +33,7 @@
                                   <td>$value[part_name]</td>
                                   <td>$value[part_number]</td>
                                   <td>$value[model]</td>
-                                  <td>$value[stock]</td>
+                                  <td>$value[stock_request]</td>
                                 </tr>
                                 ";
                         echo $body;

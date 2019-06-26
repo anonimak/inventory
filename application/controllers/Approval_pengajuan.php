@@ -44,7 +44,8 @@ class Approval_pengajuan extends My_Controller {
     public function approve($id){
         $data = array(
             'id_part_request' => $id,
-            'status' => 'approve'
+            'status' => 'approve',
+            'approve_date' => date("y-m-d h:i:s")
         );
 
         // do update stock part & insert to part_workcenter
@@ -52,7 +53,7 @@ class Approval_pengajuan extends My_Controller {
 
         foreach ($detail as $value) {
             $part = $this->model_part->getById($value['id_part']);
-            $part['stock'] = $part['stock']-$value['stock'];
+            $part['stock'] = $part['stock']-$value['stock_request'];
 
             // check part stock
             if($part['stock'] <= 0){
@@ -66,7 +67,7 @@ class Approval_pengajuan extends My_Controller {
             ]));
 
             // update stock data to workcenter
-            $part['stock'] = $value['stock'];
+            $part['stock'] = $value['stock_request'];
             // insert to workcenter
             self::insert_part_workcenter($part);
 
