@@ -1,0 +1,21 @@
+@startuml
+class CoreController {
+    view()
+    model()
+    helper()
+    isLoggedIn()
+}
+
+class ControllerDashboard {
+    __construct()
+    index()
+}
+
+class ViewDashboard {
+    data
+}
+
+CoreController <|-- ControllerDashboard
+ControllerDashboard <--o ViewDashboard
+
+@enduml

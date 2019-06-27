@@ -1,0 +1,33 @@
+@startuml
+
+class ModelPart {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    getAllNotInTransaksi()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ControllerPart_masuk {
+    model_part
+    template
+    --
+    __construct()
+    index()
+    add_part()
+}
+
+class ViewPart_masuk {
+    + data
+}
+
+
+ControllerPart_masuk <--o ViewPart_masuk
+ModelPart --> ControllerPart_masuk
+
+@enduml

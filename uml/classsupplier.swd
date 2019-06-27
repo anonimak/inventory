@@ -1,0 +1,39 @@
+@startuml
+
+
+class ModelSupplier {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ControllerSupplier {
+    model_part
+    model_supplier
+    template
+    --
+    __construct()
+    index()
+    add()
+    edit()
+    --
+    void insert()
+    void update()
+    void delete()
+}
+
+class ViewSupplier {
+    + data
+}
+
+
+ControllerSupplier <--o ViewSupplier
+ModelSupplier --> ControllerSupplier
+
+@enduml

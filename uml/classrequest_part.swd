@@ -1,0 +1,69 @@
+@startuml
+
+class ModelPartTransaksi {
+    table
+    table_detail
+    id
+    id_detail
+    --
+    __construct()
+    getAll()
+    getAllByStatus()
+    getAllDetail()
+    getById()
+    getDetailById()
+    getByStatus()
+    getReportItemByPeriode()
+
+    void insert()
+    void insertGetId()
+    void insertDetail()
+    void update()
+    void updateDetail()
+    void delete()
+    void deleteDetail()
+}
+
+class ModelPart {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    getAllNotInTransaksi()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ControllerRequest_part {
+    model_part_transaksi
+    model_part
+    template
+    --
+    __construct()
+    index()
+    add()
+    detail()
+    detail_preview()
+    add_detail()
+    edit()
+
+    void submit()
+    void insert()
+    void insert_detail()
+    void delete()
+    void delete_detail()
+}
+
+class ViewRequest_part {
+    + data
+}
+
+
+ControllerRequest_part <--o ViewRequest_part
+ModelPartTransaksi --> ControllerRequest_part
+ModelPart --> ControllerRequest_part
+
+@enduml

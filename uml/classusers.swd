@@ -1,0 +1,34 @@
+@startuml
+
+class ModelLogin {
+    table
+    id
+    --
+    findUserByEmail()
+    getUserById()
+
+    void register()
+    void login()
+}
+
+class ControllerUsers {
+    user_model
+    template
+    --
+    __construct()
+    index()
+
+    void login()
+    void createUserSession()
+    void logout()
+}
+
+class ViewUsers {
+    + data
+}
+
+
+ControllerUsers <--o ViewUsers
+ModelLogin --> ControllerUsers
+
+@enduml

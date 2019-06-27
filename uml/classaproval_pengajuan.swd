@@ -1,0 +1,78 @@
+@startuml
+
+class ModelPartTransaksi {
+    table
+    table_detail
+    id
+    id_detail
+    --
+    __construct()
+    getAll()
+    getAllByStatus()
+    getAllDetail()
+    getById()
+    getDetailById()
+    getByStatus()
+    getReportItemByPeriode()
+
+    void insert()
+    void insertGetId()
+    void insertDetail()
+    void update()
+    void updateDetail()
+    void delete()
+    void deleteDetail()
+}
+
+class ModelPartWorkcenter {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    getByPartNumber()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ModelPart {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    getAllNotInTransaksi()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ControllerApproval_pengajuan {
+    model_part_workcenter
+    model_part_transaksi
+    model_part
+    template
+    --
+    __construct()
+    index()
+    detail()
+    approve()
+    insert_part_workcenter()
+    reject()
+    delete()
+}
+
+class ViewApproval_pengajuan {
+    + data
+}
+
+
+ControllerApproval_pengajuan <--o ViewApproval_pengajuan
+ModelPartWorkcenter --> ControllerApproval_pengajuan
+ModelPartTransaksi --> ControllerApproval_pengajuan
+ModelPart --> ControllerApproval_pengajuan
+
+@enduml

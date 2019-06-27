@@ -1,0 +1,45 @@
+@startuml
+
+class ModelPartTransaksi {
+    table
+    table_detail
+    id
+    id_detail
+    --
+    __construct()
+    getAll()
+    getAllByStatus()
+    getAllDetail()
+    getById()
+    getDetailById()
+    getByStatus()
+    getReportItemByPeriode()
+
+    void insert()
+    void insertGetId()
+    void insertDetail()
+    void update()
+    void updateDetail()
+    void delete()
+    void deleteDetail()
+}
+
+class ControllerReport_item_keluar {
+    model_part_transaksi
+    template
+    --
+    __construct()
+    index()
+    pdf()
+    excel()
+}
+
+class ViewReport_item_keluar {
+    + data_report
+}
+
+
+ControllerReport_item_keluar <--o ViewReport_item_keluar
+ModelPartTransaksi --> ControllerReport_item_keluar
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+
+class ModelPartWorkcenter {
+    table
+    id
+    --
+    __construct()
+    getAll()
+    getById()
+    getByPartNumber()
+    void insert()
+    void update()
+    void delete()
+}
+
+class ControllerList_Part_Workcenter {
+    model_part_workcenter
+    template
+    --
+    __construct()
+    index()
+}
+
+class ViewList_Part_Workcenter {
+    + data
+}
+
+
+ControllerList_Part_Workcenter <--o ViewList_Part_Workcenter
+ModelPartWorkcenter --> ControllerList_Part_Workcenter
+
+@enduml
