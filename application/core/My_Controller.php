@@ -22,6 +22,7 @@ class My_Controller extends Controller
                 case '1':
                     // set template
                     $this->template->set_sidebar('admin/partials/sidebar');
+                    $this->template->set_navbar('admin/partials/navbar1');
 
                     $module = ['Dashboard','Part_masuk','List_part','Supplier','Approval_pengajuan','Report_item_keluar'];
                     if (in_array($controller, $module)){
@@ -32,6 +33,7 @@ class My_Controller extends Controller
                 case '2':
                     // set template
                     $this->template->set_sidebar('admin/partials/sidebar_2');
+                    $this->template->set_navbar('admin/partials/navbar');
 
                     $module = ['Dashboard','Request_part','List_part_work','Pengambilan_part'];
                     if (in_array($controller, $module)){
