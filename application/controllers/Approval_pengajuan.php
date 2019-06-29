@@ -45,7 +45,7 @@ class Approval_pengajuan extends My_Controller {
         $data = array(
             'id_part_request' => $id,
             'status' => 'approve',
-            'approve_date' => date("y-m-d h:i:s")
+            'approve_date' => date("y-m-d")
         );
 
         // do update stock part & insert to part_workcenter

@@ -41,7 +41,7 @@
                                     <?php 
                                         if(isset($data['data_part'])){
                                             foreach ($data['data_part'] as $value) {
-                                                    echo "<option value='$value[id_part]' data-stock='$value[stock]'>$value[nama] ($value[stock])</option>";
+                                                    echo "<option value='$value[id_part]' data-stock='$value[stock]'>$value[part_name] ($value[stock])</option>";
                                             }
                                         }
                                     ?>

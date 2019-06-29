@@ -8,7 +8,7 @@ class Pengambilan_part extends My_Controller {
 
         // panggil helper
         $this->helper('field_data');
-        $this->model = $this->model('M_part_transaksi');
+        $this->model = $this->model('M_part_pengambilan');
         $this->model_part = $this->model('M_part');
         // $this->model_supplier = $this->model('M_supplier');
 
@@ -16,29 +16,23 @@ class Pengambilan_part extends My_Controller {
 
 
     public function index($alert = NULL, $msg =NULL){
-        $data = $this->model->getAllByStatus("edit");
-        $data_approve = $this->model->getAllByStatus("approve");
-        $data_submit = $this->model->getAllByStatus("submit");
-        $data_reject = $this->model->getAllByStatus("reject");
-        $this->template->get_template('request_part',[
+        $data = $this->model->getAll();
+        $this->template->get_template('pengambilan_part',[
             "data" => $data,
-            "data_approve" => $data_approve,
-            "data_submit" => $data_submit,
-            "data_reject" => $data_reject,
-            "url_add" => BASEURL."Request_part/add/",
-            "url_submit" => BASEURL."Request_part/submit/",
-            "url_preview" => BASEURL."Request_part/detail/",
-            "url_preview_detail" => BASEURL."Request_part/detail_preview/",
-            "url_remove" => BASEURL."Request_part/delete/",
+            "url_add" => BASEURL."Pengambilan_part/add/",
+            "url_submit" => BASEURL."Pengambilan_part/submit/",
+            "url_preview" => BASEURL."Pengambilan_part/detail/",
+            "url_preview_detail" => BASEURL."Pengambilan_part/detail_preview/",
+            "url_remove" => BASEURL."Pengambilan_part/delete/",
             'alert' => $alert,
             "msg" => str_replace('_', ' ', $msg)
         ]);
     }
 
     public function add($error = NULL, $msg = NULL){
-        $this->template->get_template('request_part_form',[
+        $this->template->get_template('Pengambilan_part_form',[
             'title' => 'Add Request Part',
-            'action' => BASEURL.'Request_part/insert/',
+            'action' => BASEURL.'Pengambilan_part/insert/',
             'this' => 'add',
             'alert' => $error,
             "msg" => str_replace('_', ' ', $msg)
@@ -52,7 +46,7 @@ class Pengambilan_part extends My_Controller {
             'data' => $data,
             'id_detail' => $id,
             'title' => "Request Detail Part",
-            "url_remove" => BASEURL."Request_part/delete_detail/",
+            "url_remove" => BASEURL."Pengambilan_part/delete_detail/",
             'alert' => $error,
             "msg" => str_replace('_', ' ', $msg)
         ]);
@@ -75,7 +69,7 @@ class Pengambilan_part extends My_Controller {
             'data_part' => $data_part,
             'id' => $id,
             'title' => 'Add Detail Part',
-            'action' => BASEURL.'Request_part/insert_detail/'.$id,
+            'action' => BASEURL.'Pengambilan_part/insert_detail/'.$id,
             'this' => 'add',
             'alert' => $error,
             "msg" => str_replace('_', ' ', $msg)
@@ -85,9 +79,9 @@ class Pengambilan_part extends My_Controller {
     public function edit($id,$alert = NULL, $msg = NULL){
         $data = $this->model->getById($id);
         // get data from supplier by id
-        $this->template->get_template('request_part_form',[
+        $this->template->get_template('Pengambilan_part_form',[
             'title' => 'Edit Request Part',
-            'action' => BASEURL.'Request_part/update/',
+            'action' => BASEURL.'Pengambilan_part/update/',
             'this' => 'edit',
             'data' => $data,
             'alert' => $alert,
@@ -107,10 +101,10 @@ class Pengambilan_part extends My_Controller {
         // check if success update
         if($result){
             $msg = "Successful_Submit.";
-            $this->redirect("Request_part/success/$msg");
+            $this->redirect("Pengambilan_part/success/$msg");
         } else {
             $msg = "Failed_to_submit.";
-            $this->redirect("Request_part/error/$msg");
+            $this->redirect("Pengambilan_part/error/$msg");
         }
     }
 
@@ -123,10 +117,10 @@ class Pengambilan_part extends My_Controller {
         $result = $this->model->insertGetId(field_data($data));
         if($result){
             $msg = "Success_add_request.";
-            $this->redirect("Request_part/detail/$result");
+            $this->redirect("Pengambilan_part/detail/$result");
         } else {
             $msg = "Failed_to_insert_Supplier.";
-            $this->redirect("Request_part/error/$msg");
+            $this->redirect("Pengambilan_part/error/$msg");
         }
     }
 
@@ -140,10 +134,10 @@ class Pengambilan_part extends My_Controller {
         $result = $this->model->insertDetail(field_data($data));
         if($result){
             $msg = "Success_add_detail.";
-            $this->redirect("Request_part/add_detail/$id/success/$msg");
+            $this->redirect("Pengambilan_part/add_detail/$id/success/$msg");
         } else {
             $msg = "Failed_to_insert_Detail.";
-            $this->redirect("Request_part/add_detail/$id/error/$msg");
+            $this->redirect("Pengambilan_part/add_detail/$id/error/$msg");
         }
     }
 
@@ -153,10 +147,10 @@ class Pengambilan_part extends My_Controller {
         // check if success delete
         if($result){
             $msg = "Successful_delete.";
-            $this->redirect("Request_part/success/$msg");
+            $this->redirect("Pengambilan_part/success/$msg");
         } else {
             $msg = "Failed_to_delete.";
-            $this->redirect("Request_part/error/$msg");
+            $this->redirect("Pengambilan_part/error/$msg");
         }
     }
 
@@ -166,10 +160,10 @@ class Pengambilan_part extends My_Controller {
         // check if success delete
         if($result){
             $msg = "Successful_delete_Detail.";
-            $this->redirect("Request_part/detail/$id/success/$msg");
+            $this->redirect("Pengambilan_part/detail/$id/success/$msg");
         } else {
             $msg = "Failed_to_delete_Detail.";
-            $this->redirect("Request_part/detail/$id/error/$msg");
+            $this->redirect("Pengambilan_part/detail/$id/error/$msg");
         }
     }
     

@@ -1,0 +1,127 @@
+@startuml
+
+class Approval_pengajuan {
+    model_part_workcenter
+    model_part_transaksi
+    model_part
+    template
+    --
+    __construct()
+    index()
+    detail()
+    approve()
+    insert_part_workcenter()
+    reject()
+    delete()
+}
+
+class List_Part {
+    model_part
+    model_supplier
+    template
+    --
+    __construct()
+    index()
+    add()
+    edit()
+    --
+    void insert()
+    void update()
+    void delete()
+    void upload_image()
+}
+
+class Part_masuk {
+    model_part
+    template
+    --
+    __construct()
+    index()
+    add_part()
+}
+
+class Pengambilan_part {
+    model_part_transaksi
+    model_part
+    template
+    --
+    __construct()
+    index()
+    add()
+    detail()
+    detail_preview()
+    add_detail()
+    edit()
+
+    void submit()
+    void insert()
+    void insert_detail()
+    void delete()
+    void delete_detail()
+}
+
+class Report_item_keluar {
+    model_part_transaksi
+    template
+    --
+    __construct()
+    index()
+    pdf()
+    excel()
+}
+
+class Request_part {
+    model_part_transaksi
+    model_part
+    template
+    --
+    __construct()
+    index()
+    add()
+    detail()
+    detail_preview()
+    add_detail()
+    edit()
+
+    void submit()
+    void insert()
+    void insert_detail()
+    void delete()
+    void delete_detail()
+}
+
+class Supplier {
+    model_part
+    model_supplier
+    template
+    --
+    __construct()
+    index()
+    add()
+    edit()
+    --
+    void insert()
+    void update()
+    void delete()
+}
+
+class Users {
+    user_model
+    template
+    --
+    __construct()
+    index()
+
+    void login()
+    void createUserSession()
+    void logout()
+}
+
+List_Part --> Pengambilan_part
+List_Part --> Request_part
+Supplier --> List_Part
+Approval_pengajuan <-- List_Part
+Part_masuk <-- List_Part
+Report_item_keluar <-- Request_part
+
+@enduml

@@ -31,7 +31,13 @@ class Report_item_keluar extends My_Controller {
     }
 
     public function excel($tgl_awal =null, $tgl_akhir=null){
-
+        $data = $this->model->getReportItemByPeriode($tgl_awal, $tgl_akhir);
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=Report_item_keluar_periode.xls");
+        $this->view('admin/dashboard/report_item_keluar_excel',["data" => $data,
+            "tgl_awal" => $tgl_awal,
+            "tgl_akhir" => $tgl_akhir
+        ]); 
     }
 
 }

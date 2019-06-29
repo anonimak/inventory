@@ -30,10 +30,10 @@
     <div class="col-md-12">
       <div class="card card-user">
         <div class="card-header">
-          <h5 class="card-title">List Parts Workcenter</h5>
-          <a class="btn btn-primary" href="<?=$data['url_print_pdf']?>" role="button">
+          <h5 class="card-title">Report Item Keluar Per Periode <?= date("d/m/Y",strtotime($data['tgl_awal']))." - ".date("d/m/Y",strtotime($data["tgl_akhir"])) ?></h5>
+          <!-- <a class="btn btn-primary" href="<?=$data['url_print_pdf']?>" role="button">
                 PDF
-          </a>
+          </a> -->
           <a class="btn btn-primary" href="<?=$data['url_print_excel']?>" role="button">
                 Excel
           </a>

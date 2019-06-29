@@ -34,7 +34,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label>Unique No <star class="text-danger">*</star></label>
-                <input type="text" name="uniq_no" class="form-control" placeholder="Company" value="<?= (isset($data['data']))? $data['data']['uniq_no'] : ''; ?>" required="required"
+                <input type="text" name="uniq_no" class="form-control" placeholder="Company" value="<?= (isset($data['data']))? $data['data']['uniq_no'] : ''; ?>" required="required">
                 <input type="hidden" name="id" value="<?= (isset($data['data']))? $data['data']['id_part'] : ''; ?>">
             </div>
             </div>
