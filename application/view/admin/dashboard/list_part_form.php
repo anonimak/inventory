@@ -118,7 +118,7 @@
                             <i class="fa fa-trash"></i> Remove
                         </a>
                         <input type="file" name="upload_image" id="upload_image" accept="image/*" style="opacity:0;"/>
-                        <input type="hidden" name="hid_image" id="hid_image">
+                        <input type="hidden" name="hid_image" id="hid_image" value="<?=(isset($data['data']) && $data['data']['image'] != '')? $data['data']['image'] : ''; ?>">
                         <div id="uploaded_image"></div>
                         
                     </div>

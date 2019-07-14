@@ -4,9 +4,6 @@
       <div class="card card-user">
         <div class="card-header">
           <h5 class="card-title">List Parts Workcenter</h5>
-          <a class="btn btn-primary pull-right" href="<?=BASEURL?>Request_part" role="button">
-                Request Part
-          </a>
         </div>
         <div class="card-body">
         <?php 

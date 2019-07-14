@@ -13,7 +13,7 @@
         // Find All Part
         public function getAll(){
             $this->db->query("
-                SELECT a.*, b.nama FROM `$this->table` AS a
+                SELECT a.*, b.nama, (a.qty*a.stock) AS `total_qty` FROM `$this->table` AS a
                 LEFT JOIN `$this->table_supplier` AS b
                 ON a.`$this->id_supplier` = b.`$this->id_supplier`
             ");

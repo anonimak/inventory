@@ -10,6 +10,7 @@ class List_part extends My_Controller {
         $this->helper('field_data');
         $this->helper('upload');
         $this->model = $this->model('M_part');
+        $this->model_workcenter = $this->model('M_part_workcenter');
         $this->model_supplier = $this->model('M_supplier');
 
     }
@@ -104,6 +105,11 @@ class List_part extends My_Controller {
             'image' => $_POST['hid_image'] 
         );
         $result = $this->model->update(field_edit($data));
+
+        // ubah di workcenter 
+        unset($data[6]);
+        $this->model_workcenter->update(field_edit($data));
+        
         if($result){
             $msg = "Success_edit_Part_$data[part_name].";
             // var_dump($result);

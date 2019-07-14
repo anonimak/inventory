@@ -9,6 +9,8 @@ $().ready(function(){
     $("#supplier_form").validate();
     // validasi part masuk
     $("#part_masuk_form").validate();
+    // pengambilan part
+    $("#pengambilan_part").validate();
 
 
     // datatable

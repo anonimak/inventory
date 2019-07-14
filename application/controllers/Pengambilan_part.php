@@ -9,7 +9,7 @@ class Pengambilan_part extends My_Controller {
         // panggil helper
         $this->helper('field_data');
         $this->model = $this->model('M_part_pengambilan');
-        $this->model_part = $this->model('M_part');
+        $this->model_part = $this->model('M_part_workcenter');
         // $this->model_supplier = $this->model('M_supplier');
 
     }
@@ -31,7 +31,7 @@ class Pengambilan_part extends My_Controller {
 
     public function add($error = NULL, $msg = NULL){
         $this->template->get_template('Pengambilan_part_form',[
-            'title' => 'Add Request Part',
+            'title' => 'Add Pengambilan Part',
             'action' => BASEURL.'Pengambilan_part/insert/',
             'this' => 'add',
             'alert' => $error,
@@ -42,33 +42,22 @@ class Pengambilan_part extends My_Controller {
     public function detail($id, $error = NULL, $msg = NULL){
 
         $data = $this->model->getAllDetail($id);
-        $this->template->get_template('request_detail_part',[
+        $this->template->get_template('pengambilan_detail_part',[
             'data' => $data,
             'id_detail' => $id,
-            'title' => "Request Detail Part",
+            'title' => "Detail Pengambilan Part",
             "url_remove" => BASEURL."Pengambilan_part/delete_detail/",
             'alert' => $error,
             "msg" => str_replace('_', ' ', $msg)
         ]);
     }
 
-    public function detail_preview($id){
-
-        $data = $this->model->getAllDetail($id);
-        $this->template->get_template('request_detail_part_preview',[
-            'data' => $data,
-            'id_detail' => $id,
-            'title' => "Preview Request Detail Part"
-        ]);
-    }
-
     public function add_detail($id, $error = NULL, $msg = NULL){
-        $data_part = $this->model_part->getAllNotInTransaksi($id);
-        $data = $this->model->getAllDetail($id);
-        $this->template->get_template('request_detail_part_form',[
+        $data_part = $this->model_part->getAll($id);
+        $this->template->get_template('pengambilan_detail_part_form',[
             'data_part' => $data_part,
             'id' => $id,
-            'title' => 'Add Detail Part',
+            'title' => 'Add Detail Pengambilan Part',
             'action' => BASEURL.'Pengambilan_part/insert_detail/'.$id,
             'this' => 'add',
             'alert' => $error,
@@ -110,9 +99,9 @@ class Pengambilan_part extends My_Controller {
 
     public function insert(){
         $data = array(
-            'id_part_request' => NULL, 
-            'deskripsi' => $_POST['deskripsi'],
-            'status' => 'edit'
+            'id' => NULL, 
+            'tgl' => $_POST['tgl'],
+            'deskripsi' => $_POST['deskripsi']
         );
         $result = $this->model->insertGetId(field_data($data));
         if($result){
@@ -125,14 +114,31 @@ class Pengambilan_part extends My_Controller {
     }
 
     public function insert_detail($id){
+        $data_part = $this->model_part->getById($_POST['id_part']);
         $data = array(
-            'id' => NULL, 
-            'id_part_request' => $id,
+            'id_d_pengambilan' => NULL, 
+            'id' => $id,
             'id_part' => $_POST['id_part'],
-            'stock' => $_POST['stock']
+            'qty' => $_POST['qty']
         );
+
         $result = $this->model->insertDetail(field_data($data));
         if($result){
+            // ubah stock berdasarkan detail
+            $a = 1;
+            $each = $data_part["qty"];
+            while ($each < $_POST['qty']){
+                $each = $data_part["qty"]*$a;
+                $a++;
+            }
+
+            $array_part = array(
+                'id_part' => $_POST['id_part'],
+                'stock' => $data_part['stock']-$a
+            );
+
+            $res = $this->model_part->update(field_edit($array_part));
+
             $msg = "Success_add_detail.";
             $this->redirect("Pengambilan_part/add_detail/$id/success/$msg");
         } else {
@@ -156,14 +162,31 @@ class Pengambilan_part extends My_Controller {
 
     public function delete_detail($id){
         // delete record
+        $detail = $this->model->getDetailById($id);
         $result = $this->model->deleteDetail($id);
         // check if success delete
         if($result){
+            
+            $data_part = $this->model_part->getById($detail['id_part']);
+            $a = 1;
+            $each = $data_part["qty"];
+            while ($each < $detail['qty_detail']){
+                $each = $data_part["qty"]*$a;
+                $a++;
+            }
+
+            $array_part = array(
+                'id_part' => $detail['id_part'],
+                'stock' => $data_part['stock']+$a
+            );
+
+            $res = $this->model_part->update(field_edit($array_part));
+
             $msg = "Successful_delete_Detail.";
-            $this->redirect("Pengambilan_part/detail/$id/success/$msg");
+            $this->redirect("Pengambilan_part/detail/$detail[id]/success/$msg");
         } else {
             $msg = "Failed_to_delete_Detail.";
-            $this->redirect("Pengambilan_part/detail/$id/error/$msg");
+            $this->redirect("Pengambilan_part/detail/$detail[id]/error/$msg");
         }
     }
     

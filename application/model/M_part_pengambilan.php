@@ -42,7 +42,7 @@
         }
 
         public function getDetailById($id){
-            $this->db->query("SELECT a.*, b.* FROM `$this->table_detail` AS a
+            $this->db->query("SELECT a.*, b.*, (a.qty) as qty_detail FROM `$this->table_detail` AS a
                                 LEFT JOIN `part` AS b 
                                 ON a.`id_part` = b.`id_part`
                                 WHERE `$this->id_detail` = :id");
