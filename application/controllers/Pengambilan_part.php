@@ -123,22 +123,22 @@ class Pengambilan_part extends My_Controller {
         );
 
         $result = $this->model->insertDetail(field_data($data));
+                    // ubah stock berdasarkan detail
+                    $a = 1;
+                    $each = $data_part["qty"];
+                    do{
+                        $each = $data_part["qty"]*$a;
+                        $a++;
+                    } while($each < $_POST['qty']);
+        
+                    $array_part = array(
+                        'id_part' => $_POST['id_part'],
+                        'stock' => $data_part['stock']-$a
+                    );
+        
+                    $this->model_part->update(field_edit($array_part));
+        
         if($result){
-            // ubah stock berdasarkan detail
-            $a = 1;
-            $each = $data_part["qty"];
-            while ($each < $_POST['qty']){
-                $each = $data_part["qty"]*$a;
-                $a++;
-            }
-
-            $array_part = array(
-                'id_part' => $_POST['id_part'],
-                'stock' => $data_part['stock']-$a
-            );
-
-            $res = $this->model_part->update(field_edit($array_part));
-
             $msg = "Success_add_detail.";
             $this->redirect("Pengambilan_part/add_detail/$id/success/$msg");
         } else {

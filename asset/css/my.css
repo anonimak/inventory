@@ -27,3 +27,17 @@
     background-color: #FFFFFF;
     border-color: #EB5E28;
 }
+
+.main-panel{
+    background-color: #ffecb3;
+}
+
+/* background login */
+.background-login{
+    background-image: url("../img/wp2577177.jpg");
+  }
+
+  /* input login */
+  .input-transparant {
+    opacity: 0.5;
+}

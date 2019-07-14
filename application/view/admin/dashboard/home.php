@@ -6,13 +6,12 @@
           <div class="row">
             <div class="col-5 col-md-4">
               <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-globe text-warning"></i>
+                <i class="nc-icon nc-box text-warning"></i>
               </div>
             </div>
             <div class="col-7 col-md-8">
               <div class="numbers">
-                <p class="card-category">Capacity</p>
-                <p class="card-title">150GB
+                <p class="card-category">Part Masuk</p>
                   <p>
               </div>
             </div>
@@ -21,7 +20,9 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <i class="fa fa-refresh"></i> Update Now
+            <a href="<?= BASEURL."Part_masuk" ?>">
+              <i class="fa fa-refresh"></i> Check Part
+            </a>
           </div>
         </div>
       </div>
@@ -32,13 +33,12 @@
           <div class="row">
             <div class="col-5 col-md-4">
               <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-money-coins text-success"></i>
+                <i class="nc-icon nc-box-2 text-success"></i>
               </div>
             </div>
             <div class="col-7 col-md-8">
               <div class="numbers">
-                <p class="card-category">Revenue</p>
-                <p class="card-title">$ 1,345
+                <p class="card-category">List Part</p>
                   <p>
               </div>
             </div>
@@ -47,7 +47,9 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <i class="fa fa-calendar-o"></i> Last day
+            <a href="<?= BASEURL."List_part" ?>">
+              <i class="nc-icon nc-box-2"></i> Detail Here
+            </a>
           </div>
         </div>
       </div>
@@ -58,13 +60,12 @@
           <div class="row">
             <div class="col-5 col-md-4">
               <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-vector text-danger"></i>
+                <i class="nc-icon nc-single-02 text-danger"></i>
               </div>
             </div>
             <div class="col-7 col-md-8">
               <div class="numbers">
-                <p class="card-category">Errors</p>
-                <p class="card-title">23
+                <p class="card-category">Supplier</p>
                   <p>
               </div>
             </div>
@@ -73,7 +74,9 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <i class="fa fa-clock-o"></i> In the last hour
+            <a href="<?= BASEURL."Supplier" ?>">
+              <i class="fa fa-user"></i> Detail Here
+            </a>
           </div>
         </div>
       </div>
@@ -84,13 +87,12 @@
           <div class="row">
             <div class="col-5 col-md-4">
               <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-favourite-28 text-primary"></i>
+                <i class="nc-icon nc-paper text-primary"></i>
               </div>
             </div>
             <div class="col-7 col-md-8">
               <div class="numbers">
-                <p class="card-category">Followers</p>
-                <p class="card-title">+45K
+                <p class="card-category">Report Item</p>
                   <p>
               </div>
             </div>
@@ -99,596 +101,83 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <i class="fa fa-refresh"></i> Update now
+            <a href="<?= BASEURL."Report_item_keluar" ?>">
+              <i class="fa fa-refresh"></i> Check Here
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
+  <?php
+  if($data['alert'] == "error"){ 
+      $alert = "danger";
+      $alert_display = "show";
+  } elseif($data['alert'] == "success"){ 
+      $alert = "success";
+      $alert_display = "show";
+  } else{
+      $alert = "danger";
+      $alert_display = "d-none";
+  }
+?>
+
+<div class="content">
   <div class="row">
     <div class="col-md-12">
-      <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Users Behavior</h5>
-          <p class="card-category">24 Hours performance</p>
-        </div>
-        <div class="card-body ">
-          <canvas id=chartHours width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
-          </div>
-        </div>
+      <div class="alert alert-<?= $alert; ?> alert-dismissible fade <?= $alert_display; ?>" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <strong><?= ucfirst($data['alert']) ?></strong> 
+          <?= $data['msg'] ?>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Email Statistics</h5>
-          <p class="card-category">Last Campaign Performance</p>
-        </div>
-        <div class="card-body ">
-          <canvas id="chartEmail"></canvas>
-        </div>
-        <div class="card-footer ">
-          <div class="legend">
-            <i class="fa fa-circle text-primary"></i> Opened
-            <i class="fa fa-circle text-warning"></i> Read
-            <i class="fa fa-circle text-danger"></i> Deleted
-            <i class="fa fa-circle text-gray"></i> Unopened
-          </div>
-          <hr>
-          <div class="stats">
-            <i class="fa fa-calendar"></i> Number of emails sent
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="card card-chart">
+      <div class="card card-user">
         <div class="card-header">
-          <h5 class="card-title">NASDAQ: AAPL</h5>
-          <p class="card-category">Line Chart with Points</p>
+            <h5 class="card-title">Approval Pengajuan</h5>
         </div>
         <div class="card-body">
-          <canvas id="speedChart" width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer">
-          <div class="chart-legend">
-            <i class="fa fa-circle text-info"></i> Tesla Model S
-            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-          </div>
-          <hr/>
-          <div class="card-stats">
-            <i class="fa fa-check"></i> Data information certified
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card demo-icons">
-        <div class="card-header">
-          <h5 class="card-title">100 Awesome Nucleo Icons</h5>
-          <p class="card-category">Handcrafted by our friends from
-            <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a>
-          </p>
-        </div>
-        <div class="card-body all-icons">
-          <div id="icons-wrapper">
-            <section>
-              <ul>
-                <li>
-                  <i class="nc-icon nc-air-baloon"></i>
-                  <p>nc-air-baloon</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-album-2"></i>
-                  <p>nc-album-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-alert-circle-i"></i>
-                  <p>nc-alert-circle-i</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-align-center"></i>
-                  <p>nc-align-center</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-align-left-2"></i>
-                  <p>nc-align-left-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-ambulance"></i>
-                  <p>nc-ambulance</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-app"></i>
-                  <p>nc-app</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-atom"></i>
-                  <p>nc-atom</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-badge"></i>
-                  <p>nc-badge</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bag-16"></i>
-                  <p>nc-bag-16</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bank"></i>
-                  <p>nc-bank</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-basket"></i>
-                  <p>nc-basket</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>nc-bell-55</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bold"></i>
-                  <p>nc-bold</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-book-bookmark"></i>
-                  <p>nc-book-bookmark</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bookmark-2"></i>
-                  <p>nc-bookmark-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-box-2"></i>
-                  <p>nc-box-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-box"></i>
-                  <p>nc-box</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-briefcase-24"></i>
-                  <p>nc-briefcase-24</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bulb-63"></i>
-                  <p>nc-bulb-63</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bullet-list-67"></i>
-                  <p>nc-bullet-list-67</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-bus-front-12"></i>
-                  <p>nc-bus-front-12</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-button-pause"></i>
-                  <p>nc-button-pause</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-button-play"></i>
-                  <p>nc-button-play</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-button-power"></i>
-                  <p>nc-button-power</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-calendar-60"></i>
-                  <p>nc-calendar-60</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-camera-compact"></i>
-                  <p>nc-camera-compact</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-caps-small"></i>
-                  <p>nc-caps-small</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-cart-simple"></i>
-                  <p>nc-cart-simple</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-chart-bar-32"></i>
-                  <p>nc-chart-bar-32</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-chart-pie-36"></i>
-                  <p>nc-chart-pie-36</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-chat-33"></i>
-                  <p>nc-chat-33</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-check-2"></i>
-                  <p>nc-check-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-circle-10"></i>
-                  <p>nc-circle-10</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-cloud-download-93"></i>
-                  <p>nc-cloud-download-93</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-cloud-upload-94"></i>
-                  <p>nc-cloud-upload-94</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-compass-05"></i>
-                  <p>nc-compass-05</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-controller-modern"></i>
-                  <p>nc-controller-modern</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-credit-card"></i>
-                  <p>nc-credit-card</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-delivery-fast"></i>
-                  <p>nc-delivery-fast</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-diamond"></i>
-                  <p>nc-diamond</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-email-85"></i>
-                  <p>nc-email-85</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-favourite-28"></i>
-                  <p>nc-favourite-28</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-glasses-2"></i>
-                  <p>nc-glasses-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-globe-2"></i>
-                  <p>nc-globe-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-globe"></i>
-                  <p>nc-globe</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-hat-3"></i>
-                  <p>nc-hat-3</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-headphones"></i>
-                  <p>nc-headphones</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-html5"></i>
-                  <p>nc-html5</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-image"></i>
-                  <p>nc-image</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-istanbul"></i>
-                  <p>nc-istanbul</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-key-25"></i>
-                  <p>nc-key-25</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-laptop"></i>
-                  <p>nc-laptop</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-layout-11"></i>
-                  <p>nc-layout-11</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-lock-circle-open"></i>
-                  <p>nc-lock-circle-open</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-map-big"></i>
-                  <p>nc-map-big</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-minimal-down"></i>
-                  <p>nc-minimal-down</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-minimal-left"></i>
-                  <p>nc-minimal-left</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-minimal-right"></i>
-                  <p>nc-minimal-right</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-minimal-up"></i>
-                  <p>nc-minimal-up</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-mobile"></i>
-                  <p>nc-mobile</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-money-coins"></i>
-                  <p>nc-money-coins</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-note-03"></i>
-                  <p>nc-note-03</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-palette"></i>
-                  <p>nc-palette</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-paper"></i>
-                  <p>nc-paper</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-pin-3"></i>
-                  <p>nc-pin-3</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-planet"></i>
-                  <p>nc-planet</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-refresh-69"></i>
-                  <p>nc-refresh-69</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-ruler-pencil"></i>
-                  <p>nc-ruler-pencil</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-satisfied"></i>
-                  <p>nc-satisfied</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-scissors"></i>
-                  <p>nc-scissors</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-send"></i>
-                  <p>nc-send</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-settings-gear-65"></i>
-                  <p>nc-settings-gear-65</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-settings"></i>
-                  <p>nc-settings</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-share-66"></i>
-                  <p>nc-share-66</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-shop"></i>
-                  <p>nc-shop</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-simple-add"></i>
-                  <p>nc-simple-add</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-simple-delete"></i>
-                  <p>nc-simple-delete</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-simple-remove"></i>
-                  <p>nc-simple-remove</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-single-02"></i>
-                  <p>nc-single-02</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-single-copy-04"></i>
-                  <p>nc-single-copy-04</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-sound-wave"></i>
-                  <p>nc-sound-wave</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-spaceship"></i>
-                  <p>nc-spaceship</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-sun-fog-29"></i>
-                  <p>nc-sun-fog-29</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-support-17"></i>
-                  <p>nc-support-17</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tablet-2"></i>
-                  <p>nc-tablet-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tag-content"></i>
-                  <p>nc-tag-content</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tap-01"></i>
-                  <p>nc-tap-01</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tie-bow"></i>
-                  <p>nc-tie-bow</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>nc-tile-56</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-time-alarm"></i>
-                  <p>nc-time-alarm</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-touch-id"></i>
-                  <p>nc-touch-id</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-trophy"></i>
-                  <p>nc-trophy</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-tv-2"></i>
-                  <p>nc-tv-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-umbrella-13"></i>
-                  <p>nc-umbrella-13</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-user-run"></i>
-                  <p>nc-user-run</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-vector"></i>
-                  <p>nc-vector</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-watch-time"></i>
-                  <p>nc-watch-time</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-world-2"></i>
-                  <p>nc-world-2</p>
-                </li>
-                <li>
-                  <i class="nc-icon nc-zoom-split"></i>
-                  <p>nc-zoom-split</p>
-                </li>
-                <!-- list of icons here with the proper class-->
-              </ul>
-            </section>
-          </div>
+        <?php 
+          if(isset($data['data']) && $data['data'] != NULL){
+        ?>
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal Pengajuan</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                      $i = 1;
+                      foreach ($data['data'] as $value) {
+                        $date = date_format(date_create($value['date_creation']),"d/m/Y");
+                        $body = "
+                                <tr>
+                                  <td>".$i++."</td>
+                                  <td>$date</td>
+                                  <td>$value[deskripsi]</td>
+                                </tr>
+                                ";
+                        echo $body;
+                      }
+                  ?>
+                </tbody>
+            </table>
+            <a class="btn btn-primary" href="<?= $data["url_Approve"]?>" role="button">See Detail</a>
+            <?php
+          } else {
+            echo '<div class="alert alert-info" role="alert">
+                    <strong>No data.</strong>
+                  </div>';
+          } 
+        ?>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-<div class="content">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card card-user">
-        <div class="card-header">
-          <h5 class="card-title">Edit Profile</h5>
-        </div>
-        <div class="card-body">
-          <form  method="post" enctype="multipart/form-data">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Unique No</label>
-                  <input type="text" class="form-control" placeholder="Company" value="Creative Code Inc.">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Supplier</label>
-                  <select class="selectpicker" class="form-control">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Barbecue</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Model</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Part Number</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Part Name</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Stock</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Stock Min</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Qty</label>
-                  <input type="text" class="form-control" placeholder="Model" value="123">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Image</label>
-                  <input type="file" name="fileToUpload" class="form-control" placeholder="Model" id="fileToUpload">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="update ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary btn-round">Update Part</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
